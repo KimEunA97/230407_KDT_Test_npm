@@ -1,42 +1,30 @@
-import http from 'http'
+
+import express from 'express'
 import fs from 'fs'
 
-
-// const server = http.createServer(function (req, res) {
-
-
-//   fs.readFileSync('./index.html')
-
-
-//   res.writeHead(200, { 'Content-Type': 'text/html' });
-//   res.end();
-
-
-// })
-
-// server.listen(3050, function (error) {
-
-
-//   if (error) {
-
-//     console.log("서버 에러");
-
-//   }
-
-//   else {
-
-//     console.log("서버 구동 중...");
-
-//   }
-
-
-// })
-
-const express = require('express');
 const app = express();
 
 app.get('/', (req, res) => {
-  res.send(new Date().toLocaleTimeString());
+
+
+  fs.readFileSync('./index.html', function (err, data) {
+
+    if (err) {
+
+      res.writeHead(404);
+
+    }
+
+    else {
+
+      res.writeHead(200, { 'Content-type': 'text/html; charset=utf-8' })
+      res.write(data);
+
+    }
+    
+  })
+
+
 });
 
 app.listen(3050, () => {
