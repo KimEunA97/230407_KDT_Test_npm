@@ -7,11 +7,12 @@ const app = express();
 app.get('/', (req, res) => {
 
 
-  fs.readFileSync('./index.html', function (err, data) {
+  fs.readFile('./index.html', function (err, data) {
 
     if (err) {
 
       res.writeHead(404);
+      res.end();
 
     }
 
@@ -19,14 +20,25 @@ app.get('/', (req, res) => {
 
       res.writeHead(200, { 'Content-type': 'text/html; charset=utf-8' })
       res.write(data);
+      res.end();
 
     }
-    
+
   })
 
 
 });
 
-app.listen(3050, () => {
-  console.log('Server started on port 3050');
+app.listen(3050, (error) => {
+
+  if (error) {
+
+
+  }
+
+
+  else {
+    console.log('Server started on port 3050');
+  }
+
 });
