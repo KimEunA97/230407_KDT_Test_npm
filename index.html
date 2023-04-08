@@ -27,10 +27,11 @@
 
       let year = dt.getFullYear(); //연도
       let month = dt.getMonth() + 1; //달에 1 더해야 정상출력.
+      let dayNum =dt.getDate();//일수
 
-      let day = dt.getDay(); //요일 문자열로
+      let Wday = dt.getDay(); //요일 문자열로
       weekday = ["월요일", "화요일", "수요일", "목요일", "금요일", "토요일", "일요일"];
-      wd = weekday[day];
+      wd = weekday[Wday];
 
 
       let hour = dt.getHours(); //시
@@ -39,7 +40,7 @@
 
 
       root.children[0].innerText = year;
-      root.children[1].innerText = month + "월" + day + "일";
+      root.children[1].innerText = month + "월" + dayNum + "일";
       root.children[2].innerText = hour + ":" + min + ":" + sec;
       root.children[3].innerText = wd;
 
