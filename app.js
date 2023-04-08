@@ -33,6 +33,8 @@ app.listen(3050, (error) => {
 
   if (error) {
 
+    console.log('Server error');
+
 
   }
 
